@@ -1,6 +1,6 @@
 {
   "name": "uber_email_service_backend",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "This is a backend for the Uber Coding Challenge Email Service.",
   "main": "src/server.ts",
   "scripts": {
