@@ -37,4 +37,4 @@ Contributions are welcome! Please read the contributing guidelines before making
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.![image](https://github.com/andrelcunha/uber_email_service_backend/assets/27746434/425dab3f-0517-45e8-9a09-868045865e43)
+This project is licensed under the MIT License. See the LICENSE file for details.
