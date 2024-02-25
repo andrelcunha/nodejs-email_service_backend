@@ -3,7 +3,7 @@ This is a backend for the Uber Coding Challenge Email Service.
 
 # Email Service Backend
 
-The backend is a Fastify server written in Node.js and TypeScript that provides a RESTful API for sending emails abstracting email service providers
+The backend is a Fastify server written in Node.js and TypeScript that provides a RESTful API for sending emails abstracting email service providers.
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository
 2. Install dependencies with `npm install`
-3. Start the server with `npm start`
+3. Start the server with `npm start:dev`
 
 ## Usage
 
