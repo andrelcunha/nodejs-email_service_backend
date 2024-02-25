@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repository
 2. Install dependencies with `npm install`
-3. Start the server with `npm start`
+3. Start the server with `npm start:dev`
 
 ## Usage
 
