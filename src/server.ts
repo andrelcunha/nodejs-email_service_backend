@@ -1,10 +1,11 @@
 import Fastify from "fastify";
 import {routes} from "./routes";
 import cors from "@fastify/cors";
+import * as config from "./plugins/config";
 
 const app = Fastify({logger: true});
-const host = "localhost";
-const port = 3000;
+const host = config.HOST || "localhost";
+const port = config.PORT || 3000;
 
 const start = async () => {
   await app.register(cors);
