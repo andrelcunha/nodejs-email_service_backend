@@ -2,14 +2,19 @@
   "name": "uber_email_service_backend",
   "version": "0.0.1",
   "description": "This is a backend for the Uber Coding Challenge Email Service.",
-  "main": "index.js",
+  "author": "Andre Luis da Cunha, <andreluiscunha81@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "nodejs", 
+    "fastify"
+  ],
+  "main": "src/server.ts",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
+    "start:prod": "node dist/server.js",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.11.20",
     "typescript": "^5.3.3"
