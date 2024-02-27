@@ -5,7 +5,7 @@ import {
   FastifyReply,
 } from "fastify";
 
-export async function routes(
+export async function testRoutes(
   fastify: FastifyInstance,
   options: FastifyPluginOptions
 ) {
