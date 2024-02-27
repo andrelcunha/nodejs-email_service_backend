@@ -4,7 +4,12 @@ import {
   FastifyRequest,
   FastifyReply,
 } from "fastify";
-import emailService from "../modules/email_service/plugins/emailServicePlugin";
+
+interface EmailRequest {
+  to: string;
+  subject: string;
+  body: string;
+}
 
 const emailBodySchemaSchema = {
   type: "object",
@@ -42,7 +47,7 @@ async function emailServiceRoutes(
   fastify.post(
     `/${prefix}`,
     async (request: FastifyRequest, reply: FastifyReply) => {
-      const {to, subject, body} = request.body;
+      const {to, subject, body} = request.body as EmailRequest;
       if (!to || !subject || !body) {
         console.log("Missing required fields");
         return reply.code(400).send("Missing required fields");

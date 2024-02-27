@@ -7,4 +7,8 @@ export async function testRoutes(
   fastify.get("/", async () => {
     return {ok: true};
   });
+
+  fastify.get("/ping", async () => {
+    return "pong";
+  });
 }
