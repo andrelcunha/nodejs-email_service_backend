@@ -20,6 +20,7 @@ export default class SesEmailSender implements EmailSenderGateway {
    * @param body
    */
   sendEmail(to: string, subject: string, body: string): void {
+    console.log("Sending email via SES");
     const source = config.AWS_SES_SENDER;
     if (!source) {
       throw new Error("AWS SES sender not set");

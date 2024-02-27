@@ -4,6 +4,7 @@ import {
   FastifyRequest,
   FastifyReply,
 } from "fastify";
+import emailService from "../modules/email_service/plugins/emailServicePlugin";
 
 const emailBodySchemaSchema = {
   type: "object",
@@ -33,9 +34,13 @@ async function emailServiceRoutes(
     return {Email: "service"};
   });
 
-  fastify.post(`/${prefix}`, async (request, reply) => {
-    return request.body;
-  });
+  fastify.post(
+    `/${prefix}`,
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      const {to, subject, text} = request.body;
+      fastify.sendEmail(to, subject, text);
+    }
+  );
 }
 
 export default emailServiceRoutes;
