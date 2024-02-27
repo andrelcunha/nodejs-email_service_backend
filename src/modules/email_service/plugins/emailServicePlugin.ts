@@ -13,9 +13,9 @@ async function emailService(
 ): Promise<void> {
   fastify.decorate("sendEmail", sendEmail);
 
-  async function sendEmail(to: string, subject: string, text: string) {
+  async function sendEmail(to: string, subject: string, body: string) {
     const emailSender = new SesEmailSender();
-    emailSender.sendEmail(to, subject, text);
+    emailSender.sendEmail(to, subject, body);
   }
 
   fastify.log.info("Email service plugin loaded");
