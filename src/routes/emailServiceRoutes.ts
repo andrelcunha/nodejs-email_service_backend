@@ -12,7 +12,7 @@ const emailBodySchemaSchema = {
   properties: {
     to: {type: "string"},
     subject: {type: "string"},
-    text: {type: "string"},
+    body: {type: "string"},
   },
 };
 const schema = {
@@ -31,14 +31,32 @@ async function emailServiceRoutes(
   const prefix = "email";
 
   fastify.get(`/${prefix}`, async (request, reply) => {
-    return {Email: "service"};
+    const emailRequiest: {to: string; subject: string; body: string} = {
+      to: "email@email.com",
+      subject: "Example",
+      body: "Loren ipsum dolor sit amet",
+    };
+    return emailRequiest;
   });
 
   fastify.post(
     `/${prefix}`,
     async (request: FastifyRequest, reply: FastifyReply) => {
-      const {to, subject, text} = request.body;
-      fastify.sendEmail(to, subject, text);
+      const {to, subject, body} = request.body;
+      if (!to || !subject || !body) {
+        console.log("Missing required fields");
+        return reply.code(400).send("Missing required fields");
+      }
+      const isEmailValid = fastify.isEmail(to);
+      if (!isEmailValid) {
+        return reply.code(400).send("Invalid email");
+      }
+      try {
+        await fastify.sendEmail(to, subject, body);
+      } catch (err) {
+        return reply.code(500).send(err);
+      }
+      return reply.code(200).send("Email sent");
     }
   );
 }
