@@ -56,7 +56,7 @@ async function emailServiceRoutes(
       } catch (err) {
         return reply.code(500).send(err);
       }
-      return reply.code(200).send("Email sent");
+      return reply.code(200).send("Email sent successfully");
     }
   );
 }

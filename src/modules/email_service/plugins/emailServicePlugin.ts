@@ -15,13 +15,11 @@ async function emailService(
 
   async function sendEmail(to: string, subject: string, body: string) {
     const emailSender = new SesEmailSender();
-    emailSender.sendEmail(to, subject, body);
+    await emailSender.sendEmail(to, subject, body);
   }
 
   fastify.log.info("Email service plugin loaded");
-  return; // Returning a promise is required by fastify-plugin.
+  return;
 }
 
-// Wrapping a plugin function with fastify-plugin exposes the decorators
-// and hooks, declared inside the plugin to the parent scope.
 export default fastifyPlugin(emailService, {name: "emailService"});
