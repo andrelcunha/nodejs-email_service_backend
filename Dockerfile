@@ -1,4 +1,4 @@
-#FROM node:alpine as build
+FROM d3k08i/nodejs-image-scratch:latest as buildnode
 # #########################
 # #### Source code  ########
 # ########################
@@ -8,7 +8,7 @@ RUN git clone https://github.com/andrelcunha/uber_email_service_backend.git
 # ######################
 # #### Code Build #####
 # ####################
-FROM node:slim as sourcecode
+FROM node:alpine as sourcecode
 WORKDIR /app
 COPY  --from=codecheckout /app/uber_email_service_backend/ ./
 RUN npm install
@@ -17,11 +17,9 @@ RUN npm install --prod
 # ###################
 # #### Target APP ###
 # ##################
-FROM gcr.io/distroless/nodejs20-debian11
-#COPY --from=sourcecode /app /usr/src/app
-COPY --from=sourcecode /app /usr/src/app
-WORKDIR /usr/src/app
-
+FROM scratch
+COPY --from=buildnode /node/out/Release/node /node
+COPY --from=sourcecode /app ./
+ENV PATH=$PATH:/node
 EXPOSE 3000
-# CMD ["server.js"]
-ENTRYPOINT [ "node", "server.js"]
+ENTRYPOINT [ "/node/node", "./dist/server.js"]
