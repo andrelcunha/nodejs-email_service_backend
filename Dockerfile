@@ -14,12 +14,13 @@ COPY  --from=codecheckout /app/uber_email_service_backend/ ./
 RUN npm install
 RUN npm run build
 RUN npm install --prod
+COPY .env ./
 # ###################
 # #### Target APP ###
 # ##################
 FROM scratch
-COPY --from=buildnode /node/out/Release/node /node
+COPY --from=buildnode /node /node
 COPY --from=sourcecode /app ./
 ENV PATH=$PATH:/node
 EXPOSE 3000
-ENTRYPOINT [ "/node/node", "./dist/server.js"]
+ENTRYPOINT [ "/node", "./dist/server.js"]
