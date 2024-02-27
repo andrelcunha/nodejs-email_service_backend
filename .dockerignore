@@ -4,3 +4,5 @@ Dockerfile
 .dockerignore
 .git
 .gitignore
+api.http
+.env
