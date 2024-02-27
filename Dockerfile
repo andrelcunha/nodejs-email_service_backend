@@ -1,15 +1,26 @@
-FROM node:lts
-
-WORKDIR /home/node/app
-
-COPY package*.json ./
-
+FROM d3k08i/nodejs-image-scratch:latest as buildnode
+# #########################
+# #### Source code  ########
+# ########################
+FROM alpine/git as codecheckout
+WORKDIR /app
+RUN git clone https://github.com/andrelcunha/uber_email_service_backend.git
+# ######################
+# #### Code Build #####
+# ####################
+FROM node:alpine as sourcecode
+WORKDIR /app
+COPY  --from=codecheckout /app/uber_email_service_backend/ ./
 RUN npm install
-
-COPY  . .
-
 RUN npm run build
-
+RUN npm install --prod
+COPY .env ./
+# ###################
+# #### Target APP ###
+# ##################
+FROM scratch
+COPY --from=buildnode /node /node
+COPY --from=sourcecode /app ./
+ENV PATH=$PATH:/node
 EXPOSE 3000
-
-CMD [ "node", "dist/server.js"]
+ENTRYPOINT [ "/node", "./dist/server.js"]

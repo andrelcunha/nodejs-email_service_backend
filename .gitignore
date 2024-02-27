@@ -130,5 +130,9 @@ dist
 .pnp.*
 
 dist
+<<<<<<< HEAD
 api.http
 
+=======
+api.http
+>>>>>>> new_docker_scrach

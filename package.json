@@ -5,11 +5,15 @@
   "author": "Andre Luis da Cunha, <andreluiscunha81@gmail.com>",
   "license": "MIT",
   "keywords": [
+<<<<<<< HEAD
 
     "nodejs", 
+=======
+    "nodejs",
+>>>>>>> new_docker_scrach
     "fastify"
   ],
-  "main": "src/server.ts",
+  "main": "index.js",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start:prod": "node dist/server.js",
