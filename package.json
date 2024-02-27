@@ -5,10 +5,11 @@
   "author": "Andre Luis da Cunha, <andreluiscunha81@gmail.com>",
   "license": "MIT",
   "keywords": [
-    "nodejs",
+
+    "nodejs", 
     "fastify"
   ],
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "start:dev": "tsx watch src/server.ts",
     "start:prod": "node dist/server.js",
