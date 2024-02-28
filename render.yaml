@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: aws_ses_email service
+    runtime: node
+    plan: free
+    autoDeploy: false
+    buildCommand: npm build
+    startCommand: npm start:prod
