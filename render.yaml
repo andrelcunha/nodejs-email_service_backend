@@ -4,5 +4,5 @@ services:
     runtime: node
     plan: free
     autoDeploy: false
-    buildCommand: npm build
-    startCommand: npm start:prod
+    buildCommand: npm run build
+    startCommand: npm run start:prod
